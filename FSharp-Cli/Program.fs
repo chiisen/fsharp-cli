@@ -26,7 +26,7 @@ let runPrint print =
 [<EntryPoint>]
 let main argv = 
     let errorHandler = ProcessExiter(colorizer = function ErrorCode.HelpText -> None | _ -> Some ConsoleColor.Red)
-    let parser = ArgumentParser.Create<CmdArgs>(programName = "initech", errorHandler = errorHandler)
+    let parser = ArgumentParser.Create<CmdArgs>(programName = "fsharp-cli", errorHandler = errorHandler)
     
     match parser.ParseCommandLine argv with
     | p when p.Contains(Print) -> runPrint (p.GetResult(Print))
