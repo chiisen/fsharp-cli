@@ -2,7 +2,7 @@
   "profiles": {
     "FSharp-Cli": {
       "commandName": "Project",
-      "commandLineArgs": "-a 好棒棒2"
+      "commandLineArgs": "-r eventnews"
     }
   }
 }

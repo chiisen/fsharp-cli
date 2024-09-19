@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Helper\RedisHelper.fs" />
     <Compile Include="command\RunPrint.fs" />
     <Compile Include="command\RunColorPrint.fs" />
     <Compile Include="Program.fs" />
@@ -17,6 +18,7 @@
 
   <ItemGroup>
     <PackageReference Include="Argu" Version="6.2.4" />
+    <PackageReference Include="StackExchange.Redis" Version="2.8.16" />
   </ItemGroup>
 
 </Project>
