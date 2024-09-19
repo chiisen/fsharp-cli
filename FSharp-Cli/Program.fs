@@ -1,5 +1,7 @@
 ﻿open System
 open Argu
+open RunColorPrint // 引用 RunColorPrint 模組
+open RunPrint // 引用 RunPrint 模組
 
 // 定义命令行错误类型
 type CliError =
@@ -27,19 +29,6 @@ let getExitCode result =
         | ArgumentsNotSpecified -> 1
         | _ -> 2 // 对于其他未指定的错误，返回一个默认的退出代码，例如2
 
-// 执行打印功能，将消息输出到控制台
-let runPrint print =
-    printfn "%s" print
-    Ok()
-
-// 执行打印功能，将消息输出到控制台
-let runColorPrint color print =
-    let originalColor = Console.ForegroundColor
-    Console.ForegroundColor <- color
-    printfn "%s" print
-    Console.ForegroundColor <- originalColor
-    Ok()
-
 [<EntryPoint>]
 // 程序的入口点，处理命令行参数并执行相应的功能
 let main argv =
@@ -57,10 +46,10 @@ let main argv =
     let exitCode =
         match parser.ParseCommandLine argv with
         | p when p.Contains(Print) ->
-            (runPrint (p.GetResult(Print)) |> ignore)
+            (RunPrint (p.GetResult(Print)) |> ignore)
             0 // 返回合适的退出代码（表示成功）
         | p when p.Contains(Add) ->
-            (runColorPrint ConsoleColor.Red (p.GetResult(Add)) |> ignore)
+            (RunColorPrint ConsoleColor.Red (p.GetResult(Add)) |> ignore)
             0 // 返回合适的退出代码（表示成功）
         | p ->
             // 处理其他未被捕获的情况

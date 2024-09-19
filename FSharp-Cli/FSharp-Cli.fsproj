@@ -10,6 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="command\RunPrint.fs" />
+    <Compile Include="command\RunColorPrint.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
